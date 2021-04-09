@@ -11,7 +11,9 @@ The former can be found in main/, and the latter in main/Webapp/.
 Note that the training weights for the translator are too large to directly store on GitHub, and so may be
 downloaded from Google Drive at https://drive.google.com/drive/folders/1qBMGpf5ZWLNjEFModRPmEQy4Wr4BYp0B?usp=sharing.
 The expected location of these for the .ipynb file is main/checkpoints/train/.
+
 The expected location of these for the webapp is main/Webapp/backend/model/checkpoints/train/.
+
 train/ should contain 'ckpt-240.index', 'ckpt-240.data-00000-of-00001', and 'checkpoint'.
 
 # ---------------
