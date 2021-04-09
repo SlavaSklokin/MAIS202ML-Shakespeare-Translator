@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+   <script src="/static/js/main.js"></script>
+</head>
+
+<body>
+
+   {% if tab_to_show == 'mnist' %}
+   <div class="tab">
+     <!-- <button class="tablinks" onclick="openTab(event, 'MNIST')" id="defaultOpen">MNIST</button>-->
+      <button class="tablinks" onclick="openTab(event, 'GPT2')" id="defaultOpen">Translator</button>
+   </div>
+   {% else %}
+   <div class="tab">
+      <!--<button class="tablinks" onclick="openTab(event, 'MNIST')">MNIST</button>-->
+      <button class="tablinks" onclick="openTab(event, 'GPT2')" id="defaultOpen">Translator</button>
+   </div>
+   {% endif %}
+<!--
+   !-- Tab for MNIST classification --
+   <div id="MNIST" class="tabcontent">
+      <h1 class="title"> MNIST FLASK APP DEMO </h1>
+
+      <form id="form" method="POST" enctype="multipart/form-data">
+
+         <input type="hidden" name="predictor" value="mnist">
+
+         {% if prediction != None %}
+         !-- Show prediction results. --
+         <p> The MNIST model read a <b>{{ prediction }}</b> </p>
+         {% endif %}
+
+         !-- Show upload button for follow up predictions. --
+         <label for="file-upload" class="center custom-button">
+            upload an image
+            <input type="file" id="file-upload" name="image" onchange=submit() />
+         </label>
+      </form>
+   </div>
+-->
+
+
+   <!-- Tab for GPT2 text generation -->
+   <div id="GPT2" class="tabcontent">
+      <h1>Modern-to-Shakesperean English <strike>Translator</strike> Generator</h1>
+	  <h4>It doesn't really translate, more like "makes up whatever it wants."</h4>
+	  <h4>Think of the input sentence more as a seed for a generator. Which it pretty much is.</h4>
+
+      <form method="POST" enctype="multipart/form-data">
+
+         <input type="hidden" name="predictor" value="gpt2">
+         Input sentence:<br>
+         <input type="text" size="120" name="starting_tokens" value="Write a sentence here.">
+         <br>
+         <!--Number of tokens to generate:<br>
+         <input type="number" name="sequence_length" value="40">
+         <br><br>-->
+         <input type="submit" value="Submit">
+
+      </form><br>
+		Output:
+		{% if generated_text != None %}
+	  <textarea id="outputEmpty" name="outputboxEmpty" rows="4" cols="113">{{ generated_text }}</textarea>
+		{% else %}
+		<textarea id="output" name="outputbox" rows="4" cols="113"></textarea>
+		{% endif %}
+		
+      
+      
+
+
+   </div>
+
+   <script>
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+   </script>
+
+</body>
+
+</html>
